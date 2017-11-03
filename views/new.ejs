@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" scroll = "no">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/img/owlet_ico.ico" type="image/ico" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+	<title>Owlet indie team</title>
+</head>
+<body>
+<header>
+	<section class = "headerContainer">
+		<section class = "menuConters">
+			<img class ="logo" src = "/img/logo.png" width="125" height="150">
+			<div class = "rightSide">
+				<img  class ="logo2" src ="/img/logo2.png" width="200"  height="55">
+				<div class="lines"></div>
+					<ul class = "menus">
+						<li><a href =  "/">Home</a></li>
+						<li><a href = "/news">News</a></li>
+						<li><a href = "/forum">Forum</a></li>
+						<li><a href = "#">About</a></li>
+					</ul>
+				</div>
+		</section>
+	</section>
+</header>
+<div class = "mainNews">
+	<section class = "projectInfoNews">
+		<div class="wraper">
+			<div class = "newContainer">
+			<% for(i in news){ %>
+				<div class = "remove" id = "<%- news[i]._id %>">Remove</div>
+				<div class = "edit" id = "<%- news[i]._id %>">Edit</div>
+				<div class = "newTitle"><%- news[i].title %></div>
+					<div class = "newDate"><%- news[i].date %></div>
+					<!-- <div class = "newImg"><img src ="/img/<%- news[i].img %>"></div> -->
+					<div class = "New"><%- news[i].news %></div>
+			<% } %>
+			</div>
+			<form class="editPanel" id = "myForm">
+				<a  id ="linkExit">X</a>
+				<section class = "formMain">
+					<input type = "text" placeholder="Topic" id = "topic">
+					<input type = "text" placeholder="date" id = "date">
+					<textarea id = "news" placeholder="News"></textarea>
+					<input type="file" name="myFile2" id = "file2">
+					<a id = "submit2">Отправить</a>
+				</section>
+				<ul class = "discHelp">
+					<li><span><</span>h1<span>></span> Заголовок<span><</span>/h1<span>></span></li>
+					<li><span><</span>b<span>></span> Жирный текст<span><</span>/b<span>></span></li>
+					<li><span><</span>strike<span>></span> зачеркнуиый текст<span><</span>/strike<span>></span></li>
+					<li><span><</span>u<span>></span> подчеркнутый текст<span><</span>/u<span>></span></li>
+					<li><span><</span>ul<span>></span> маркированый список<span><</span>/ul<span>></span></li>
+					<li><span><</span>/ol<span>></span> нумерованый список<span><</span>/ol<span>></span></li>
+					<li><span><</span>a href="url"<span>></span> текст ссылки<span><</span>/a<span>></span></li>
+					<li><span><</span>img src = "path or url"<span>></span></li>
+					<li><span><</span>iframe src="url"<span>></span> текст ссылки<span><</span>/iframe<span>></span></li>
+					<li><span><</span>br<span>></span>перенос строки</li>
+				</ul>
+			</form>
+		</div>
+	</section>
+</div>
+<footer>
+	<section class="footerContainer">
+		<ul class = "menuf">
+			<li><a href = "http://dulce.chrom-web.ga:8000">Home</a></li>
+			<li><a href = "http://dulce.chrom-web.ga:8000/news">News</a></li>
+			<li><a href = "/forum">Forum</a></li>
+			<li><a href = "#">About</a></li>
+			<div class = "net">
+				<div class = "netItem" id ="vk">
+					<a href ="https://vk.com/feelthesnow"><img src ="/img/vk.png"></a>
+				</div>
+				<div class = "netItem" id = "facebook">
+					<a href="https://www.facebook.com/FTSthegame"><img src ="/img/fb.png"></a>
+				</div>
+				<div class = "netItem" id = "twitter">
+					<a href="https://twitter.com/owletplay"><img src ="/img/tw.png"></a>
+				</div>
+				<div class = "netItem" id = "steam">
+					<a href = "http://store.steampowered.com/app/538100/Feel_The_Snow/"><img src ="/img/steam.png"></a>
+				</div>
+				<div class = "netItem" id = "youtuber">
+					<a href = "https://www.youtube.com/channel/UC6Af4iq7WPdJea9AFxPsSZw"><img src ="/img/yt.png"></a>
+				</div>
+		</div>
+		</ul>
+		@All Rights Reserved Owlet 2017
+	</section>
+</footer>
+<section class = "shadow"></section>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/admin.js"></script>
+<script src = "/js/news.js"></script>
+<script src = "/js/loadNew.js"></script>
+</html>

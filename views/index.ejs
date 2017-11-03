@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" scroll = "no">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="img/owlet_ico.ico" type="image/ico" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+	<title>Owlet indie team</title>
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<script src = "js/beforeLoading.js"></script>
+<div  class = "preloader">
+	<img src = "img/beforeloading.gif">
+	<!-- <img src = "img/gif.gif"> -->
+</div>
+<header>
+	<section class = "headerContainer">
+		<section class = "menuConters">
+			<img class ="logo" src = "img/logo.png" width="125" height="150">
+			<div class = "rightSide">
+				<img  class ="logo2"src ="img/logo2.png" width="200"  height="55">
+				<div class="lines"></div>
+					<ul class = "menus">
+						<li><a href = "#">Home</a></li>
+						<li><a href = "/news">News</a></li>
+						<li><a href = "/forum">Forum</a></li>
+						<li><a href = "#">About</a></li>
+					</ul>
+				</div>
+		</section>
+	</section>
+</header>
+<div class="parallax-window" data-parallax="scroll" data-natural-width = "1600" data-natural-height = "900" data-image-src="main_paralax_bg.jpg"></div>
+<main>
+	<section class = "mainContainer">
+		<div class="text_info_main_section">Owlet team games:</div>
+		<section class = "gameContainer">
+			<% for(i in projects) {%>
+				<div class = "gameItem">
+					<img src = "img/<%= projects[i].img %>"/>
+					<div class="removeP" id = "<%= projects[i]._id %>">Remove</div>
+					<div class="editP" id = "<%= projects[i]._id %>">Edit</div>
+					<div class = "discrription">
+						<div class = "projectText"><%= projects[i].discription %></div>
+					</div>
+				</div>
+			<% } %>
+			<!-- <div class = "gameItem" id ="zero"></div> -->
+			<div class = "show_admi_panel">
+			+
+			</div>
+		</section>
+		<form class="admin_panel" id = "myForm">
+			<a  id ="linkExit">X</a>
+			<section class = "formMain">
+				<textarea id = "discriptionImg" placeholder="Discription"></textarea>
+				<input type = "file" name = "myFile" id = "file">
+				<a id = "submit1">Отправить</a>
+				<input type = "text" placeholder="Topic" id = "topic">
+				<input type = "text" placeholder="date" id = "date">
+				<textarea id = "news" placeholder="News"></textarea>
+				<input type="file" name="myFile2" id = "file2">
+				<a id = "submit2">Отправить</a>
+			</section>
+			<ul class = "discHelp">
+				<li><span><</span>h1<span>></span> Заголовок<span><</span>/h1<span>></span></li>
+				<li><span><</span>b<span>></span> Жирный текст<span><</span>/b<span>></span></li>
+				<li><span><</span>strike<span>></span> зачеркнуиый текст<span><</span>/strike<span>></span></li>
+				<li><span><</span>u<span>></span> подчеркнутый текст<span><</span>/u<span>></span></li>
+				<li><span><</span>ul<span>></span> маркированый список<span><</span>/ul<span>></span></li>
+				<li><span><</span>/ol<span>></span> нумерованый список<span><</span>/ol<span>></span></li>
+				<li><span><</span>a href="url"<span>></span> текст ссылки<span><</span>/a<span>></span></li>
+				<li><span><</span>img src = "path or url"<span>></span></li>
+				<li><span><</span>iframe src="url"<span>></span> текст ссылки<span><</span>/iframe<span>></span></li>
+				<li><span><</span>br<span>></span>перенос строки</li>
+			</ul>
+		</form>
+	</section>
+	<section class = "projectInfo">
+			<div class = "info">
+				<section class = "last-news">
+					<div class = "newsWraper">
+						<% if(news!="" && news.length>5){ %>
+							<% for(var i=news.length-1;i>news.length-5;i--){%>
+								<div class = "news">
+									<div class = "nConteiner" id = "<%=news[i]._id %>">
+										<div class = "img-news"><img src = "img/<%= news[i].img %>" width="65px" height="50px"></div>
+										<section class = "newsTextContainer">
+											<div class = "news-text"><%= news[i].title %></div>
+											<data><%= news[i].date %></data><br>
+										</section>
+									</div>
+								</div>
+							<% } %>
+						<% } else { %> 
+							<% for(var i = news.length-1;i>=0;i--){%>
+								<div class = "news">
+									<div class = "nConteiner" id = "<%=news[i]._id %>">
+										<div class = "img-news"><img src = "img/<%= news[i].img %>" width="65px" height="50px"></div>
+										<section class = "newsTextContainer">
+											<div class = "news-text"><%= news[i].title %></div>
+											<data><%= news[i].date %></data><br>
+										</section>
+									</div>
+								</div>
+							<% } %>
+						<% } %>
+
+						<div class ="button_news"><a href = "/news">All news</a></div>
+						<div class = "show_admin_panel2">+</div>
+					</div>
+					<div class = "firsBigNews">
+						<b>First game of Owlet team</b>
+						<!-- <img src ="img/main_paralax_bg.png" width="400" height="300" /> -->
+						<iframe width="400" height="225" src="https://www.youtube.com/embed/Nv4wBIFNWLU?showinfo=0"  frameborder="0" allowfullscreen></iframe>
+					</div>
+				</section>
+			</div>
+		</section>
+</main>
+<footer>
+	<section class="footerContainer">
+		<ul class = "menuf">
+			<li><a href = "#">Home</a></li>
+			<li><a href = "/news">News</a></li>
+			<li><a href = "/forum">Forum</a></li>
+			<li><a href = "#">About</a></li>
+			<div class = "net">
+				<div class = "netItem" id ="vk">
+					<a href ="https://vk.com/feelthesnow"><img src ="img/vk.png"></a>
+				</div>
+				<div class = "netItem" id = "facebook">
+					<a href="https://www.facebook.com/FTSthegame"><img src ="img/fb.png"></a>
+				</div>
+				<div class = "netItem" id = "twitter">
+					<a href="https://twitter.com/owletplay"><img src ="img/tw.png"></a>
+				</div>
+				<div class = "netItem" id = "steam">
+					<a href = "http://store.steampowered.com/app/538100/Feel_The_Snow/"><img src ="img/steam.png"></a>
+				</div>
+				<div class = "netItem" id = "youtuber">
+					<a href = "https://www.youtube.com/channel/UC6Af4iq7WPdJea9AFxPsSZw"><img src ="img/yt.png"></a>
+				</div>
+		</div>
+		</ul>
+		@All Rights Reserved Owlet 2017
+		
+	</section>
+</footer>
+<section class = "shadow"></section>
+</body>
+<script src="js/parallax.min.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/new.js"></script>
+</html>

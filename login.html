@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="login.css">
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class = "wraper">
+		<form>
+			<div class = "headerForm">
+				AUTHORIZATION
+			</div>
+			<div class = "mainForm">
+				<input type="text" placeholder="Login" name="" id="login">
+				<input type="password" placeholder="Password" name="" id="password">
+				<div class = "check"><input type="checkbox" name="">
+				ЗАПОМНИТЬ МЕНЯ</div>
+			</div>
+			<div class = "footerForm">
+				<a href ="#" id = "submit">ВОЙТИ</a>
+			</div>
+		</form>
+	</div>
+</body>
+<script>
+var inputLogin = document.querySelector("#login");
+var inputPassword = document.querySelector("#password");
+var inputSubmit = document.querySelector("#submit");
+inputSubmit.addEventListener("click",function(){
+	if(inputLogin.value!="" && inputPassword.value!=""){
+		$.ajax({
+			url:"/autorezationOwlet",
+			method:"POST",
+			data:{
+				login:inputLogin.value,
+				password:inputPassword.value
+			}
+		});
+		// document.location = "http://dulce.chrom-web.ga:8000";
+		document.location = "http://fts:9000/"
+	}
+});
+</script>
+</html>

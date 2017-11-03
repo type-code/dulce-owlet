@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forum</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<script src ="js/jquery.min.js"></script>
+<script src="js/ckeditor/ckeditor.js"></script>
+<script src="js/ckeditor/adapters/jquery.js"></script>
+<script src = "js/forum.js"></script>
+<body>
+	<section class = "fHeaderContainer">
+		<div class = "owlLogo">
+			<b>OWLET</b>
+		</div>
+		<nav class = "menu">
+			<a href="">Home</a>
+			<a href="">News</a>
+			<a href="">Forum</a>
+			<a href="">About</a>
+		</nav>
+		<div class = "fAuthorization">
+			<% if(login==null){%>
+				<%-"<input type='text' placeholder = 'Login' id='login'>"%>
+				<%-"<input type='password' placeholder = 'Password' id='password'>"%>
+				<%-"<div id = 'SingInSubmit'>Sing In</div>"%>
+			<%}%>
+		</div>
+		<%if(login!=null){%>
+			<%-"<div id = 'quit'>Quit</div>"%>
+		<%}%>
+		<a href = "http://dulce.chrom-web.ga:9000/registration" id="regForum">Регистрация</a>
+	</section>
+	<section class = "fMainContainer">
+		<nav class = "fMainMenuWraper">
+			<div class = "fMainMenu">
+			<a href = "#">any button</a>
+			<a href = "#">any button</a>
+			<a href = "#">any button</a>
+			<a href = "#">any button</a>
+			<div class = "serch">
+				serch
+				<input type="text">
+			</div>
+		</nav>
+		<div class="announcements">
+			<h1 style = "text-align: center;margin-top:30px"><%=role%></h1>
+		</div>
+		<div class = "posts">
+
+			<% for(i in dataPosts){ %>
+			<div class = "topic">
+			<%= dataPosts[i].content %></div>
+		<%}%>
+		</div>
+		<div class = "topics">
+			<% if(role == "admin" || role == "moder"){%>
+				<%- "<textarea class = 'editor'></textarea>"%>
+				<%- "<div id='addForumTopic'>Add section</div>"%>
+			<%}%>
+			<% for(var i = dataNews.length;i>0;i--){ %>
+				<div class = "topic">
+					<div class = "TopicContent"><%- dataNews[i-1].content %></div>
+					<% if(role == "admin" || role == "moder"){%>
+						<%-"<div class='delleteTopic'>X</div>"%>
+					<%}%>
+					<div class = "makerTag" <%if(dataNews[i-1].roleAdd=="moder"){%>
+							style="color:RGBA(0,1,255,0.7);";
+					<%}else if(dataNews[i-1].roleAdd=="admin"){%>
+						style="color:RGBA(0,198,30,0.7)";
+					<%}else{%>
+						style="color:black";
+					<%}%>
+					>
+						<span>added : </span><%=dataNews[i-1].loginAdd%>	
+					</div>
+				</div>
+			<%}%>
+		</div>
+		<div class="lastTopics">
+			<% for(i in dataTopics){ %>
+			<div class = "topic"><%= dataTopics[i].content %></div>
+		<%}%>
+		</div>
+	</section>
+</body>
+</html>

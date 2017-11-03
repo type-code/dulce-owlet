@@ -1,0 +1,25 @@
+{
+  "name": "pakage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bytes": "^2.5.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "htmlspecialchars": "^1.0.5",
+    "mongodb": "^2.2.29",
+    "multer": "^1.3.0",
+    "node": "^0.0.0",
+    "node-static": "^0.7.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
