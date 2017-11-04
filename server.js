@@ -364,6 +364,14 @@ app.post('/addForumTopick',function(req,res){
 	res.send("200").end();
 });
 
+app.get('/forum/them/:id',function(req,res){
+	console.log("works");
+	var	nId = req.params.id;
+	db.collection('forumPosts').find({themId:nId}).toArray(function(err,data){
+		res.render('them',{news:data});
+	});
+});
+
 app.get('*',function(req,res){
 	res.redirect("/");
 });

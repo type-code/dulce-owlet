@@ -421,7 +421,7 @@ footer {
       text-align: justify;
       color: rgba(0, 0, 0, 0.7); }
       .wraper .newContainer .New img {
-        width: 550px;
+        width: 100%;
         padding-top: 10px;
         padding-bottom: 10px; }
 

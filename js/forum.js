@@ -66,5 +66,8 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 		console.log("не густо");
 	}
 })
-
+	$('.topic').click(function(){
+		var link = $(this).data("topic");
+		document.location = "http://dulce-owlet:9000/forum/them/"+link;
+	});
 });

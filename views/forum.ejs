@@ -50,7 +50,7 @@
 		<div class = "posts">
 
 			<% for(i in dataPosts){ %>
-			<div class = "topic">
+			<div class = "topicMin">
 			<%= dataPosts[i].content %></div>
 		<%}%>
 		</div>
@@ -60,7 +60,7 @@
 				<%- "<div id='addForumTopic'>Add section</div>"%>
 			<%}%>
 			<% for(var i = dataNews.length;i>0;i--){ %>
-				<div class = "topic">
+				<div class = "topic" data-topic = "<%-dataNews[i-1]._id %>">
 					<div class = "TopicContent"><%- dataNews[i-1].content %></div>
 					<% if(role == "admin" || role == "moder"){%>
 						<%-"<div class='delleteTopic'>X</div>"%>
@@ -80,7 +80,7 @@
 		</div>
 		<div class="lastTopics">
 			<% for(i in dataTopics){ %>
-			<div class = "topic"><%= dataTopics[i].content %></div>
+			<div class = "topicMin"><%= dataTopics[i].content %></div>
 		<%}%>
 		</div>
 	</section>
