@@ -364,14 +364,22 @@ app.post('/addForumTopick',function(req,res){
 	res.send("200").end();
 });
 
-app.get('/forum/them/:id',function(req,res){
-	console.log("works");
+app.get('/forum/topics/:id',function(req,res){
+	console.log(req.params.id);
 	var	nId = req.params.id;
 	db.collection('forumPosts').find({themId:nId}).toArray(function(err,data){
-		res.render('them',{news:data});
+		res.render('topics',{post:data});
 	});
 });
 
+
+app.get('/forum/topic/:id',function(req,res){
+	console.log(req.params.id);
+	var	nId = req.params.id;
+	db.collection('forumPosts').find({_id:ObjectID(nId)}).toArray(function(err,data){
+		res.render('topic',{post:data});
+	});
+});
 app.get('*',function(req,res){
 	res.redirect("/");
 });

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>post</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src ="/js/jquery.min.js"></script>
+	<script src="/js/ckeditor/ckeditor.js"></script>
+	<script src="/js/ckeditor/adapters/jquery.js"></script>
+	<script src = "/js/forum.js"></script>
+</head>
+<body>
+	<section class = "fHeaderContainer">
+		<div class = "owlLogo">
+			<b>OWLET</b>
+		</div>
+		<nav class = "menu">
+			<a href="">Home</a>
+			<a href="">News</a>
+			<a href="">Forum</a>
+			<a href="">About</a>
+		</nav>
+	</section>
+	<section class="topicsContainer">
+		<% for(var i = post.length;i>0;i--){ %>
+			<div class="topicTopic" data-topic=<%=post[i-1]._id%>>
+				<%=post[i-1].header%><br>
+<!-- 				<%=post[i-1].content%><br>
+				<%=post[i-1].userId%><br>
+				<%=post[i-1].themId%><br> -->
+			</div>
+		<%}%>
+	</section>
+</body>
+</html>

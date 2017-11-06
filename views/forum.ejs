@@ -60,7 +60,7 @@
 				<%- "<div id='addForumTopic'>Add section</div>"%>
 			<%}%>
 			<% for(var i = dataNews.length;i>0;i--){ %>
-				<div class = "topic" data-topic = "<%-dataNews[i-1]._id %>">
+				<div class = "topic" data-topic = "<%= dataNews[i-1]._id %>">
 					<div class = "TopicContent"><%- dataNews[i-1].content %></div>
 					<% if(role == "admin" || role == "moder"){%>
 						<%-"<div class='delleteTopic'>X</div>"%>

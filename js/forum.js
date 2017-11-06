@@ -68,6 +68,12 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 })
 	$('.topic').click(function(){
 		var link = $(this).data("topic");
-		document.location = "http://dulce-owlet:9000/forum/them/"+link;
+		document.location = "http://dulce-owlet:9000/forum/topics/"+link;
+	});
+
+	$('.topicTopic').click(function(){
+		console.log("click topicTopic");
+		var link = $(this).data("topic");
+		document.location = "http://dulce-owlet:9000/forum/topic/"+link;
 	});
 });
