@@ -380,6 +380,11 @@ app.get('/forum/topic/:id',function(req,res){
 		res.render('topic',{post:data});
 	});
 });
+app.get('/forum/createTopic',function(req,res){
+	db.collection('forumNews').find().toArray(function(err,data){
+		res.render('createTopic',{topic:data});
+	});
+});
 app.get('*',function(req,res){
 	res.redirect("/");
 });

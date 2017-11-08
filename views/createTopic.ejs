@@ -21,16 +21,13 @@
 			<a href="">About</a>
 		</nav>
 	</section>
-	<section class="topicsContainer">
-		<a href="http://dulce-owlet:9000/forum/createTopic" class="btnAddTopic">Add new topic</a>
-		<% for(var i = post.length;i>0;i--){ %>
-			<div class="topicTopic" data-topic=<%=post[i-1]._id%>>
-				<%=post[i-1].header%><br>
-<!-- 				<%=post[i-1].content%><br>
-				<%=post[i-1].userId%><br>
-				<%=post[i-1].themId%><br> -->
-			</div>
-		<%}%>
+	<section class="createTopickContent">
+		<select name="select" id="selectPost">
+			<% for(var i = topic.length;i>0;i--){ %>
+				<option value= <%=topic[i-1]._id%>><%-topic[i-1].content %></option>
+			<%}%>
+		</select><br>
+		<textarea name="" id="" cols="30" rows="10"></textarea>
 	</section>
 </body>
 </html>

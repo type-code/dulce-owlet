@@ -919,3 +919,36 @@ footer{
 	background: white;
 	border: 1px solid black;
 }
+/*Topic*/
+.topicsContainer{
+	width: 1200px;
+	margin:auto;
+	padding: 20px;
+	box-sizing: border-box;
+	.btnAddTopic{
+		text-decoration: none;
+	    color: white;
+	    background: black;
+	    padding: 10px 25px;
+	    font-size: 15px;
+	    transition: 0.5s all;
+	    &:hover{
+    		background: #35c0c7;
+	    }
+	}
+	.topicTopic{
+		padding: 20px;
+		margin-top: 20px;
+		box-sizing: border-box;
+		border: 2px solid black;
+	}
+}
+/*TopicCreate*/
+.createTopickContent{
+	width: 1200px;
+	margin: auto;
+	border: 2px solid black;
+	padding: 20px;
+	box-sizing: border-box;
+	margin-top:20px;
+}
