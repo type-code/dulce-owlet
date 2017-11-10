@@ -934,6 +934,7 @@ footer{
 	    transition: 0.5s all;
 	    &:hover{
     		background: #35c0c7;
+    		cursor: pointer;
 	    }
 	}
 	.topicTopic{
@@ -951,4 +952,18 @@ footer{
 	padding: 20px;
 	box-sizing: border-box;
 	margin-top:20px;
+}
+
+.butonSendTopick{
+	text-decoration: none;
+	color: white;
+	display: inline-block;
+	background: black;
+	padding: 10px 25px;
+	font-size: 15px;
+	transition: 0.5s all;
+	&:hover{
+		background: #35c0c7;
+		cursor: pointer;
+	}
 }

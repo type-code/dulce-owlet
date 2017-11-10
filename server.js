@@ -385,6 +385,21 @@ app.get('/forum/createTopic',function(req,res){
 		res.render('createTopic',{topic:data});
 	});
 });
+
+app.post('/addTopic',function(req,res){
+	var content = req.body.content;
+	var themId = req.body.themId;
+	var userId = req.body.userId;
+	var header = req.body.header;
+	db.collection('forumPosts').insert({
+		content:content,
+		header:header,
+		themId:themId,
+		userId:userId,
+		role:role
+	}),
+	res.send("200").end();
+});
 app.get('*',function(req,res){
 	res.redirect("/");
 });

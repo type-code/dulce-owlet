@@ -22,12 +22,14 @@
 		</nav>
 	</section>
 	<section class="createTopickContent">
-		<select name="select" id="selectPost">
+		<select class="selectPost">
 			<% for(var i = topic.length;i>0;i--){ %>
 				<option value= <%=topic[i-1]._id%>><%-topic[i-1].content %></option>
 			<%}%>
 		</select><br>
-		<textarea name="" id="" cols="30" rows="10"></textarea>
+		<input type="text" class="headerTopic">
+		<textarea class = "editor"></textarea><br>
+		<div class="butonSendTopick">Create</div>
 	</section>
 </body>
 </html>

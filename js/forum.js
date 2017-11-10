@@ -76,4 +76,25 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 		var link = $(this).data("topic");
 		document.location = "http://dulce-owlet:9000/forum/topic/"+link;
 	});
+
+	//Send Topic
+
+	$('.butonSendTopick').click(function(){
+		var valAddForumTopick = $( 'textarea.editor' ).val();
+		var select = $('.selectPost').val();
+		var header = $('.headerTopic').val();
+    	console.log(select);
+		if ($(valAddForumTopick)!="" && $(header)!=""){
+			$.ajax({
+				url:'/addTopic',
+				type:'post',
+				data:{header:header,content:valAddForumTopick,themId:select,userId:user[0],role:user[1]},
+				success:function(code){
+					if(code==200){
+						location.reload();
+					}
+				}
+			});
+		}
+	})
 });

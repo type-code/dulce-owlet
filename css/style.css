@@ -768,7 +768,8 @@ footer {
     font-size: 15px;
     transition: 0.5s all; }
     .topicsContainer .btnAddTopic:hover {
-      background: #35c0c7; }
+      background: #35c0c7;
+      cursor: pointer; }
   .topicsContainer .topicTopic {
     padding: 20px;
     margin-top: 20px;
@@ -783,5 +784,17 @@ footer {
   padding: 20px;
   box-sizing: border-box;
   margin-top: 20px; }
+
+.butonSendTopick {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background: black;
+  padding: 10px 25px;
+  font-size: 15px;
+  transition: 0.5s all; }
+  .butonSendTopick:hover {
+    background: #35c0c7;
+    cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
