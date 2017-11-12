@@ -79,7 +79,7 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 
 	//Send Topic
 
-	$('.butonSendTopick').click(function(){
+	$('.butonSendREST').click(function(){
 		var valAddForumTopick = $( 'textarea.editor' ).val();
 		var select = $('.selectPost').val();
 		var header = $('.headerTopic').val();
@@ -97,4 +97,28 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 			});
 		}
 	})
+
+	///Send Comment
+	$('.butonSendRESTTopick').click(function(){
+		var valAddForumTopick = $( 'textarea.editor' ).val();
+		// var link = document.origin;
+		// this.data("topic");
+		var idTopic = $(this).data("topic");
+		if(user[0]){
+			$.ajax({
+				url:"/addComment",
+				type:"post",
+				data:{idTopic:idTopic,userId:user[0],content:valAddForumTopick},
+				success:function(code){
+					if(code==200){
+						location.reload();
+					}
+				}
+			})
+		}
+		else{
+			alert("Для создания коментариев вы должны быть залогинены");
+		}
+	});
 });
+

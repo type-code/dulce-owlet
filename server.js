@@ -260,7 +260,7 @@ app.post('/adminPanel2',function(req,res){
 /////FORUM
 app.get('/forum',function(req,res){
 	console.log(" Method GET /forum");
-	db.collection('forumNews').find().toArray(function(err,dataForumNews){
+	db.collection('forumThem').find().toArray(function(err,dataForumNews){
 		db.collection('forumPosts').find().toArray(function(err,dataForumPosts){
 			db.collection('forumTopics').find().toArray(function(err,dataForumTopics){
 				if(req.cookies.login!= undefined){
@@ -356,7 +356,7 @@ app.post('/addForumTopick',function(req,res){
 	var content = req.body.content;
 	var loginAdd = req.body.loginAdd;
 	var roleAdd = req.body.roleAdd;
-	db.collection('forumNews').insert({
+	db.collection('forumThem').insert({
 		content:content,
 		loginAdd:loginAdd,
 		roleAdd:roleAdd
@@ -381,7 +381,7 @@ app.get('/forum/topic/:id',function(req,res){
 	});
 });
 app.get('/forum/createTopic',function(req,res){
-	db.collection('forumNews').find().toArray(function(err,data){
+	db.collection('forumThem').find().toArray(function(err,data){
 		res.render('createTopic',{topic:data});
 	});
 });
@@ -397,6 +397,19 @@ app.post('/addTopic',function(req,res){
 		themId:themId,
 		userId:userId,
 		role:role
+	}),
+	res.send("200").end();
+});
+
+app.post('/addComment',function(req,res){
+	var userId = req.body.userId;
+	var content= req.body.content;
+	var idTopic = req.body.idTopic;
+	console.log("CHLENIX");
+	db.collection('ForumComment').insert({
+		userId:userId,
+		content:content,
+		idTopic:idTopic
 	}),
 	res.send("200").end();
 });
