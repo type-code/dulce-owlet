@@ -16,7 +16,6 @@ app.use(express.static(__dirname));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({limit:'100mb'}));
 app.use(bodyParser.json({limit:'100mb'}));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.listen(9000,function(){
@@ -377,7 +376,10 @@ app.get('/forum/topic/:id',function(req,res){
 	console.log(req.params.id);
 	var	nId = req.params.id;
 	db.collection('forumPosts').find({_id:ObjectID(nId)}).toArray(function(err,data){
-		res.render('topic',{post:data});
+		db.collection('forumComment').find({idTopic:nId}).toArray(function(err,data1){
+			console.log(data1);
+			res.render('topic',{post:data,comment:data1});
+		})
 	});
 });
 app.get('/forum/createTopic',function(req,res){
@@ -391,6 +393,7 @@ app.post('/addTopic',function(req,res){
 	var themId = req.body.themId;
 	var userId = req.body.userId;
 	var header = req.body.header;
+	var role = req.body.role;
 	db.collection('forumPosts').insert({
 		content:content,
 		header:header,
@@ -406,7 +409,7 @@ app.post('/addComment',function(req,res){
 	var content= req.body.content;
 	var idTopic = req.body.idTopic;
 	console.log("CHLENIX");
-	db.collection('ForumComment').insert({
+	db.collection('forumComment').insert({
 		userId:userId,
 		content:content,
 		idTopic:idTopic

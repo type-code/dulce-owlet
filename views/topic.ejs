@@ -17,6 +17,13 @@
 		<%=post[0].content%><br>
 		<%=post[0]._id%><br>
 	</div>
+	<% for(i in comment){%>
+		<div class="comments">
+			<%=comment[i].userId%><br>
+			<%=comment[i].content%><br>
+		</div>
+		<br>
+	<%}%>
 	<textarea class="editor"></textarea>
 	<div class = "butonSendRESTTopick" data-topic =<%=post[0]._id%>>Send</div>
 </body>

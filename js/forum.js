@@ -104,17 +104,20 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 		// var link = document.origin;
 		// this.data("topic");
 		var idTopic = $(this).data("topic");
-		if(user[0]){
-			$.ajax({
-				url:"/addComment",
-				type:"post",
-				data:{idTopic:idTopic,userId:user[0],content:valAddForumTopick},
-				success:function(code){
-					if(code==200){
-						location.reload();
+		console.log(valAddForumTopick);
+		if(window.user!==undefined){
+			if(user[0]!=""){
+				$.ajax({
+					url:"/addComment",
+					type:"post",
+					data:{idTopic:idTopic,userId:user[0],content:valAddForumTopick},
+					success:function(code){
+						if(code==200){
+							location.reload();
+						}
 					}
-				}
-			})
+				})
+			}
 		}
 		else{
 			alert("Для создания коментариев вы должны быть залогинены");
