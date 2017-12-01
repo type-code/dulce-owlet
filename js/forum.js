@@ -106,7 +106,7 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 		var idTopic = $(this).data("topic");
 		console.log(valAddForumTopick);
 		if(window.user!==undefined){
-			if(user[0]!=""){
+			if(user[1]!=="unlogin_user"){
 				$.ajax({
 					url:"/addComment",
 					type:"post",
@@ -124,4 +124,3 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 		}
 	});
 });
-

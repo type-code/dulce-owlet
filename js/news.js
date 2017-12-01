@@ -19,7 +19,7 @@ for(var i=0;i<link.length;i++){
 			type:"post",
 			data:{newId:newId}
 		});
-		document.location = "http://fts:9000/new/"+newId;
+		document.location = "http://dulce-owlet:9000/new/"+newId;
 	});
 }
 
@@ -36,7 +36,7 @@ function edit_new(id){
 	editPanel.style.display = "block";
 	linkExit.addEventListener("click",function(){
 		editPanel.style.display = "none";
-		document.location = "http://fts:9000/news";
+		document.location = "http://dulce-owlet:9000/news";
 	});
 	$.ajax({
 		url:'/getNew',

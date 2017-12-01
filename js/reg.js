@@ -4,7 +4,7 @@ $(".fRSubmitt").click(function(){
 	var rePassword = $(".frrepassword").val();
 	var email = $(".fremail").val();
 	var checkKaptcha = $(".fRForm").serializeArray()
-	if(checkKaptcha[0].value!=""){
+	// if(checkKaptcha[0].value!=""){
 		if(login!="" && password!="" && rePassword !=""){
 			if(password == rePassword){
 				console.log("password : true");
@@ -33,8 +33,8 @@ $(".fRSubmitt").click(function(){
 		else{
 			alert("нужно заполнить все поля");
 		}
-	}
-	else{
-		alert("капча незаполнена");
-	}
+	// }
+	// else{
+		// alert("капча незаполнена");
+	// }
 })

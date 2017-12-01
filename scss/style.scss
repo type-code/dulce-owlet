@@ -733,6 +733,7 @@ footer{
 			cursor: pointer;
 		}
 		.topic{
+			position: relative;
 			width: 100%;
 			padding: 20px;
 			border: 2px solid black;
@@ -755,6 +756,13 @@ footer{
 				span{
 					color:RGBA(0,0,0,0.7);
 				}
+			}
+			.counter{
+				position: absolute;
+			    right: 20px;
+			    top: 65px;
+			    font-weight: normal;
+			    color: rgba(0,0,0,0.4);
 			}
 		}
 	}
@@ -965,5 +973,36 @@ footer{
 	&:hover{
 		background: #35c0c7;
 		cursor: pointer;
+	}
+}
+.topicsWraaper{
+	width: 1000px;
+	margin: auto;
+	padding: 20px;
+	margin-top:30px;
+	background: #e8e8e7;
+	border: 2px solid black;
+	.topic{
+		padding: 20px;
+		width: 1000px;
+		margin: auto;
+		margin-top: 20px;
+		box-sizing: border-box;
+		border: 1px solid rgba(255,255,255,0.7);
+		background: #e1ffdf;
+	}
+	.comments{
+		padding: 20px;
+		width: 1000px;
+		margin: auto;
+		margin-top: 20px;
+		box-sizing: border-box;
+		border: 2px solid black;
+		background: #f5f5f5;
+	}
+	.textEditor{
+		width: 1000px;
+		margin: auto;
+		margin-top: 20px;
 	}
 }

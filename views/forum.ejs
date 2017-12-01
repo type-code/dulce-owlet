@@ -30,7 +30,7 @@
 		<%if(login!=null){%>
 			<%-"<div id = 'quit'>Quit</div>"%>
 		<%}%>
-		<a href = "http://dulce.chrom-web.ga:9000/registration" id="regForum">Регистрация</a>
+		<a href = "http://dulce-owlet:9000/registration" id="regForum">Регистрация</a>
 	</section>
 	<section class = "fMainContainer">
 		<nav class = "fMainMenuWraper">
@@ -51,7 +51,7 @@
 
 			<% for(i in dataPosts){ %>
 			<div class = "topicMin">
-			<%= dataPosts[i].content %></div>
+			<%= dataPosts[i].header %></div>
 		<%}%>
 		</div>
 		<div class = "topics">
@@ -75,13 +75,12 @@
 					>
 						<span>added : </span><%=dataNews[i-1].loginAdd%>	
 					</div>
+					<div class="counter">counter: <%- dataNews[i-1].count%></div>
 				</div>
 			<%}%>
 		</div>
 		<div class="lastTopics">
-			<% for(i in dataTopics){ %>
-			<div class = "topicMin"><%= dataTopics[i].content %></div>
-		<%}%>
+			<div class = "topicMin"></div>
 		</div>
 	</section>
 </body>

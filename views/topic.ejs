@@ -10,21 +10,36 @@
 <script src = "/js/forum.js"></script>
 </head>
 <body>
-	<div class="topicTopic">
-		<%=post[0].header%><br>
-		<%=post[0].themId%><br>
-		<%=post[0].userId%><br>
-		<%=post[0].content%><br>
-		<%=post[0]._id%><br>
-	</div>
-	<% for(i in comment){%>
-		<div class="comments">
-			<%=comment[i].userId%><br>
-			<%=comment[i].content%><br>
+	<section class = "fHeaderContainer">
+		<div class = "owlLogo">
+			<b>OWLET</b>
 		</div>
-		<br>
-	<%}%>
-	<textarea class="editor"></textarea>
-	<div class = "butonSendRESTTopick" data-topic =<%=post[0]._id%>>Send</div>
+		<nav class = "menu">
+			<a href="">Home</a>
+			<a href="">News</a>
+			<a href="">Forum</a>
+			<a href="">About</a>
+		</nav>
+	</section>
+	<section class="topicsWraaper">
+		<div class="topic">
+			<div class="header"><%-post[0].header%></div>
+			<div><%-post[0].themId%></div>
+			<div><%-post[0].userId%></div>
+			<div><%-post[0].content%></div>
+			<div><%-post[0]._id%></div>
+		</div>
+		<% for(i in comment){%>
+			<div class="comments">
+				<%-comment[i].userId%><br>
+				<%-comment[i].content%><br>
+			</div>
+			<br>
+		<%}%>
+		<div class="textEditor">
+			<textarea class="editor"></textarea>
+			<div class = "butonSendRESTTopick" data-topic =<%=post[0]._id%>>Send</div>
+		</div>
+	</section>
 </body>
 </html>

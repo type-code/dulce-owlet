@@ -25,10 +25,7 @@
 		<a href="http://dulce-owlet:9000/forum/createTopic" class="btnAddTopic">Add new topic</a>
 		<% for(var i = post.length;i>0;i--){ %>
 			<div class="topicTopic" data-topic=<%=post[i-1]._id%>>
-				<%=post[i-1].header%><br>
-				<%=post[i-1].content%><br>
-				<%=post[i-1].userId%><br>
-				<%=post[i-1].themId%><br>
+				<%-post[i-1].header%><br>
 			</div>
 		<%}%>
 	</section>

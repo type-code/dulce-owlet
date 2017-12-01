@@ -606,6 +606,7 @@ footer {
       background: #40E0C8;
       cursor: pointer; }
     .fMainContainer .topics .topic {
+      position: relative;
       width: 100%;
       padding: 20px;
       border: 2px solid black;
@@ -625,6 +626,12 @@ footer {
         font-size: 11px; }
         .fMainContainer .topics .topic .makerTag span {
           color: RGBA(0, 0, 0, 0.7); }
+      .fMainContainer .topics .topic .counter {
+        position: absolute;
+        right: 20px;
+        top: 65px;
+        font-weight: normal;
+        color: rgba(0, 0, 0, 0.4); }
   .fMainContainer .lastTopics {
     width: 24.5%;
     margin-top: 20px;
@@ -785,7 +792,7 @@ footer {
   box-sizing: border-box;
   margin-top: 20px; }
 
-.butonSendTopick {
+.butonSendREST {
   text-decoration: none;
   color: white;
   display: inline-block;
@@ -793,8 +800,36 @@ footer {
   padding: 10px 25px;
   font-size: 15px;
   transition: 0.5s all; }
-  .butonSendTopick:hover {
+  .butonSendREST:hover {
     background: #35c0c7;
     cursor: pointer; }
+
+.topicsWraaper {
+  width: 1000px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 30px;
+  background: #e8e8e7;
+  border: 2px solid black; }
+  .topicsWraaper .topic {
+    padding: 20px;
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: #e1ffdf; }
+  .topicsWraaper .comments {
+    padding: 20px;
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    background: #f5f5f5; }
+  .topicsWraaper .textEditor {
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

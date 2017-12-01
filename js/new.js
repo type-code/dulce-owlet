@@ -16,7 +16,7 @@ for(var i=0;i<link.length;i++){
 			type:"post",
 			data:{newId:newId}
 		})
-		document.location = "http://fts:9000/new/"+newId;
+		document.location = "http://dulce-owlet:9000/new/"+newId;
 	});
 }
 

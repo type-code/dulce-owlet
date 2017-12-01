@@ -19,7 +19,7 @@ app.use(bodyParser.json({limit:'100mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.listen(9000,function(){
-	console.log("ya rabotayu");
+	console.log("Server started!!");
 });
 app.get('/',function(req,res){
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -32,7 +32,6 @@ app.get('/',function(req,res){
 });
 app.get('/login',function(req,res){
 	res.sendFile(__dirname +"/login.html");
-	console.log("zashol");
 });
 //SELECT ALL NEWS
 app.get('/news',function(req,res){
@@ -208,10 +207,8 @@ app.post('/autorezationOwlet',function(req,res){
 			res.cookie("login",login);
 			res.cookie("password",password);
 			res.end();
-			console.log("cookie saved");
 		}
 		else{
-			console.log("ne pravilniy parol");
 		}
 	});
 });
@@ -261,29 +258,33 @@ app.get('/forum',function(req,res){
 	console.log(" Method GET /forum");
 	db.collection('forumThem').find().toArray(function(err,dataForumNews){
 		db.collection('forumPosts').find().toArray(function(err,dataForumPosts){
-			db.collection('forumTopics').find().toArray(function(err,dataForumTopics){
-				if(req.cookies.login!= undefined){
-					if(req.cookies.status == "admin"){
-						// res.render("forum.ejs",{data:"you admin"});
-						res.render("forum.ejs",{dataNews:dataForumNews,dataTopics:dataForumTopics,dataPosts:dataForumPosts,role:"admin",login:req.cookies.login});
+			var them = new Array(dataForumNews.length);
+			for(var i = 0;i < dataForumNews.length;i++){
+				for(var j = 0;j < dataForumPosts.length;j++){
+					if(dataForumNews[i]._id == dataForumPosts[j].themId){
+						dataForumNews[i].count++;
 					}
-					else if(req.cookies.status == "moder"){
-						res.render("forum.ejs",{dataNews:dataForumNews,dataTopics:dataForumTopics,dataPosts:dataForumPosts,role:"moder",login:req.cookies.login});
-					}
-					else{
-						res.render("forum.ejs",{dataNews:dataForumNews,dataTopics:dataForumTopics,dataPosts:dataForumPosts,role:"user",login:req.cookies.login});
-					}
+				}
+			}
+			if(req.cookies.login!= undefined){
+				if(req.cookies.status == "admin"){
+					res.render("forum.ejs",{dataNews:dataForumNews,dataPosts:dataForumPosts,role:"admin",login:req.cookies.login});
+				}
+				else if(req.cookies.status == "moder"){
+					res.render("forum.ejs",{dataNews:dataForumNews,dataPosts:dataForumPosts,role:"moder",login:req.cookies.login});
 				}
 				else{
-					res.render("forum.ejs",{dataNews:dataForumNews,dataTopics:dataForumTopics,dataPosts:dataForumPosts,role:"unlogin_user",login:req.cookies.login});
+					res.render("forum.ejs",{dataNews:dataForumNews,dataPosts:dataForumPosts,role:"user",login:req.cookies.login});
 				}
-			});
+			}
+			else{
+				res.render("forum.ejs",{dataNews:dataForumNews,dataPosts:dataForumPosts,role:"unlogin_user",login:req.cookies.login});
+			}
 		});	
 	})
 });
 
 app.get('/registration',function(req,res){
-	console.log("forumActivated");
 	res.sendFile(__dirname+"/views/registration.html");
 	// res.render("forum.ejs",{data:"322"});
 });
@@ -302,11 +303,9 @@ app.post('/forumReg',function(req,res){
 	var rePassword = req.body.rePassword;
 	var email = req.body.email;
 	db.collection('users').find({login:login}).toArray(function(err,data){
-		console.log(data);
 		if(data!=""){
 			console.log("reg falce");
 			res.send("500").end();
-			console.log(data);
 		}
 		else{
 			db.collection('users').insert({
@@ -315,8 +314,6 @@ app.post('/forumReg',function(req,res){
 				rePassword:rePassword,
 				email:email
 			}),
-			console.log("reg true");
-			console.log(data.login),
 			res.send("200").end();
 		}
 	});
@@ -326,7 +323,6 @@ app.post('/forumLogin',function(req,res){
 	var login = req.body.login;
 	var password = req.body.password;
 	db.collection('users').findOne({login:login,password:password,},function(err,data){
-		console.log(data);
 		if(data!= null){
 			if(data.login == login && data.password == password){
 				res.cookie("login",login);
@@ -338,7 +334,6 @@ app.post('/forumLogin',function(req,res){
 			}
 		}
 		else{
-			console.log("error");
 			res.send("err").end();
 		}
 	});
@@ -364,7 +359,6 @@ app.post('/addForumTopick',function(req,res){
 });
 
 app.get('/forum/topics/:id',function(req,res){
-	console.log(req.params.id);
 	var	nId = req.params.id;
 	db.collection('forumPosts').find({themId:nId}).toArray(function(err,data){
 		res.render('topics',{post:data});
@@ -377,7 +371,6 @@ app.get('/forum/topic/:id',function(req,res){
 	var	nId = req.params.id;
 	db.collection('forumPosts').find({_id:ObjectID(nId)}).toArray(function(err,data){
 		db.collection('forumComment').find({idTopic:nId}).toArray(function(err,data1){
-			console.log(data1);
 			res.render('topic',{post:data,comment:data1});
 		})
 	});
@@ -408,7 +401,6 @@ app.post('/addComment',function(req,res){
 	var userId = req.body.userId;
 	var content= req.body.content;
 	var idTopic = req.body.idTopic;
-	console.log("CHLENIX");
 	db.collection('forumComment').insert({
 		userId:userId,
 		content:content,
