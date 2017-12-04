@@ -764,6 +764,13 @@ footer{
 			    font-weight: normal;
 			    color: rgba(0,0,0,0.4);
 			}
+			.date{
+				position: absolute;
+			    right: 20px;
+			    top: 35px;
+			    font-weight: normal;
+			    color: rgba(0,0,0,0.4);
+			}
 		}
 	}
 
@@ -983,6 +990,7 @@ footer{
 	background: #e8e8e7;
 	border: 2px solid black;
 	.topic{
+		position: relative;
 		padding: 20px;
 		width: 1000px;
 		margin: auto;
@@ -990,8 +998,16 @@ footer{
 		box-sizing: border-box;
 		border: 1px solid rgba(255,255,255,0.7);
 		background: #e1ffdf;
+		.date{
+			position: absolute;
+		    right: 20px;
+		    top: 35px;
+		    font-weight: normal;
+		    color: rgba(0,0,0,0.4);
+		}
 	}
 	.comments{
+		position: relative;
 		padding: 20px;
 		width: 1000px;
 		margin: auto;
@@ -999,6 +1015,13 @@ footer{
 		box-sizing: border-box;
 		border: 2px solid black;
 		background: #f5f5f5;
+		.date{
+			position: absolute;
+		    right: 20px;
+		    top: 35px;
+		    font-weight: normal;
+		    color: rgba(0,0,0,0.4);
+		}
 	}
 	.textEditor{
 		width: 1000px;

@@ -258,7 +258,7 @@ app.get('/forum',function(req,res){
 	console.log(" Method GET /forum");
 	db.collection('forumThem').find().toArray(function(err,dataForumNews){
 		db.collection('forumPosts').find().toArray(function(err,dataForumPosts){
-			var them = new Array(dataForumNews.length);
+			//var them = new Array(dataForumNews.length);
 			for(var i = 0;i < dataForumNews.length;i++){
 				for(var j = 0;j < dataForumPosts.length;j++){
 					if(dataForumNews[i]._id == dataForumPosts[j].themId){
@@ -350,10 +350,13 @@ app.post('/addForumTopick',function(req,res){
 	var content = req.body.content;
 	var loginAdd = req.body.loginAdd;
 	var roleAdd = req.body.roleAdd;
+	var date = req.body.date;
 	db.collection('forumThem').insert({
 		content:content,
 		loginAdd:loginAdd,
-		roleAdd:roleAdd
+		date:date,
+		roleAdd:roleAdd,
+		count:0
 	}),
 	res.send("200").end();
 });
@@ -387,11 +390,13 @@ app.post('/addTopic',function(req,res){
 	var userId = req.body.userId;
 	var header = req.body.header;
 	var role = req.body.role;
+	var date = req.body.date;
 	db.collection('forumPosts').insert({
 		content:content,
 		header:header,
 		themId:themId,
 		userId:userId,
+		date:date,
 		role:role
 	}),
 	res.send("200").end();
@@ -401,9 +406,11 @@ app.post('/addComment',function(req,res){
 	var userId = req.body.userId;
 	var content= req.body.content;
 	var idTopic = req.body.idTopic;
+	var date = req.body.date;
 	db.collection('forumComment').insert({
 		userId:userId,
 		content:content,
+		date:date,
 		idTopic:idTopic
 	}),
 	res.send("200").end();

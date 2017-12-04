@@ -47,6 +47,14 @@ var quit = $("#quit").click(function(){
 		}
 	});
 });
+function getDate(){
+	var dateObj = new Date();
+	var month = dateObj.getUTCMonth() + 1;
+	var day = dateObj.getUTCDate();
+	var year = dateObj.getUTCFullYear();
+	var dateArray = [year,month,day];
+	return dateArray;
+}
 
 var buttonAddForumTopick = $('#addForumTopic').click(function(){
 	var valAddForumTopick = $( 'textarea.editor' ).val();
@@ -54,7 +62,7 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 		$.ajax({
 			url:'/addForumTopick',
 			type:'post',
-			data:{content:valAddForumTopick,loginAdd:user[0],roleAdd:user[1]},
+			data:{content:valAddForumTopick,loginAdd:user[0],date:getDate(),roleAdd:user[1]},
 			success:function(code){
 				if(code==200){
 					location.reload();
@@ -88,7 +96,7 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 			$.ajax({
 				url:'/addTopic',
 				type:'post',
-				data:{header:header,content:valAddForumTopick,themId:select,userId:user[0],role:user[1]},
+				data:{header:header,content:valAddForumTopick,themId:select,date:getDate(),userId:user[0],role:user[1]},
 				success:function(code){
 					if(code==200){
 						location.reload();
@@ -110,7 +118,7 @@ var buttonAddForumTopick = $('#addForumTopic').click(function(){
 				$.ajax({
 					url:"/addComment",
 					type:"post",
-					data:{idTopic:idTopic,userId:user[0],content:valAddForumTopick},
+					data:{idTopic:idTopic,userId:user[0],date:getDate(),content:valAddForumTopick},
 					success:function(code){
 						if(code==200){
 							location.reload();
